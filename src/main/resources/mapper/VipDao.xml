@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.appTv.dao.VipDao">
+
+    <resultMap type="com.sf.appTv.entity.Vip" id="VipMap">
+        <result property="selectId" column="select_id" jdbcType="INTEGER"/>
+        <result property="des" column="des" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="VipMap">
+        select
+         select_id, des
+        from appstore.vip
+        where select_id= #{selectId}
+    </select>
+
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="VipMap">
+        select
+        select_id, des
+        from appstore.vip
+        <where>
+            <if test="selectId != null">
+                and select_id = #{selectId}
+            </if>
+            <if test="des != null and des != ''">
+                and des = #{des}
+            </if>
+        </where>
+    </select>
+
+
+
+</mapper>

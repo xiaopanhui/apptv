@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.appTv.dao.AppUserDao">
+
+    <resultMap type="com.sf.appTv.entity.AppUser" id="AppUserMap">
+        <result property="username" column="username" jdbcType="INTEGER"/>
+        <result property="vipState" column="vip_state" jdbcType="INTEGER"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="expireDate" column="expire_date" jdbcType="TIMESTAMP"/>
+        <result property="selectId" column="select_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AppUserMap">
+        select
+          username, vip_state, avatar, expire_date, select_id
+        from appstore.app_user
+        where username = #{username}
+    </select>
+    <select id="queryAll" resultMap="AppUserMap">
+        select
+          username, vip_state, avatar, expire_date, select_id
+        from appstore.app_user
+
+    </select>
+
+
+    <!--通过主键修改数据-->
+    <update id="update" useGeneratedKeys="true" keyColumn="username">
+        update appstore.app_user
+        <set>
+
+            <if test="avatar != null and avatar != ''">
+                avatar = #{avatar},
+            </if>
+            <if test="vipState != null ">
+                vip_state = #{vipState},
+            </if>
+            <if test="expireDate != null">
+                expire_date = #{expireDate},
+            </if>
+            <if test="selectId != null">
+                select_id = #{selectId},
+            </if>
+        </set>
+        where username = #{username}
+    </update>
+
+
+</mapper>

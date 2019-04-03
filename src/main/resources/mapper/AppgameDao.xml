@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.appTv.dao.AppgameDao">
+
+    <resultMap type="com.sf.appTv.entity.Appgame" id="AppgameMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="coverHorizontalUrl" column="cover_horizontal_url" jdbcType="VARCHAR"/>
+        <result property="coverVerticalUrl" column="cover_vertical_url" jdbcType="VARCHAR"/>
+        <result property="gameState" column="game_state" jdbcType="INTEGER"/>
+        <result property="des" column="des" jdbcType="VARCHAR"/>
+        <result property="downNum" column="down_num" jdbcType="INTEGER"/>
+        <result property="fileSize" column="file_size" jdbcType="VARCHAR"/>
+        <result property="tag" column="tag" jdbcType="VARCHAR"/>
+        <result property="versionName" column="version_name" jdbcType="VARCHAR"/>
+        <result property="versionCode" column="version_code" jdbcType="INTEGER"/>
+        <result property="applicationId" column="application_id" jdbcType="VARCHAR"/>
+        <result property="startPackage" column="start_package" jdbcType="VARCHAR"/>
+        <result property="dwonloadUrl" column="dwonload_url" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap type="com.sf.appTv.entity.AppgameOut" id="AppgameOutMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="coverHorizontalUrl" column="cover_horizontal_url" jdbcType="VARCHAR"/>
+        <result property="coverVerticalUrl" column="cover_vertical_url" jdbcType="VARCHAR"/>
+        <result property="gameState" column="game_state" jdbcType="INTEGER"/>
+        <result property="des" column="des" jdbcType="VARCHAR"/>
+        <result property="downNum" column="down_num" jdbcType="INTEGER"/>
+        <result property="fileSize" column="file_size" jdbcType="VARCHAR"/>
+        <result property="tag" column="tag" jdbcType="VARCHAR"/>
+        <result property="versionName" column="version_name" jdbcType="VARCHAR"/>
+        <result property="versionCode" column="version_code" jdbcType="INTEGER"/>
+        <result property="applicationId" column="application_id" jdbcType="VARCHAR"/>
+        <result property="startPackage" column="start_package" jdbcType="VARCHAR"/>
+        <result property="dwonloadUrl" column="dwonload_url" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <collection property="detailImages" column="appid" ofType="com.sf.appTv.entity.Appimg">
+            <result property="imgurl" column="imgurl" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+
+    <resultMap type="com.sf.appTv.entity.AppgameOut" id="AppgameOutMap2">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="coverHorizontalUrl" column="cover_horizontal_url" jdbcType="VARCHAR"/>
+        <result property="coverVerticalUrl" column="cover_vertical_url" jdbcType="VARCHAR"/>
+        <result property="gameState" column="game_state" jdbcType="INTEGER"/>
+        <result property="des" column="des" jdbcType="VARCHAR"/>
+        <result property="downNum" column="down_num" jdbcType="INTEGER"/>
+        <result property="fileSize" column="file_size" jdbcType="VARCHAR"/>
+        <result property="tag" column="tag" jdbcType="VARCHAR"/>
+        <result property="versionName" column="version_name" jdbcType="VARCHAR"/>
+        <result property="versionCode" column="version_code" jdbcType="INTEGER"/>
+        <result property="applicationId" column="application_id" jdbcType="VARCHAR"/>
+        <result property="startPackage" column="start_package" jdbcType="VARCHAR"/>
+        <result property="dwonloadUrl" column="dwonload_url" jdbcType="VARCHAR"/>
+        <collection property="detailImages" column="appid" ofType="com.sf.appTv.entity.Appimg">
+            <result property="imgurl" column="imgurl" jdbcType="VARCHAR"/>
+        </collection>
+
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AppgameMap">
+        select
+          id, name, cover_horizontal_url, cover_vertical_url, game_state, des, down_num, file_size, tag, version_name, version_code, application_id, start_package, dwonload_url
+        from appstore.appgame
+        where id = #{id} and isdel=0
+    </select>
+
+
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="AppgameMap">
+        select
+          id, name, cover_horizontal_url, cover_vertical_url, game_state, des, down_num, file_size, tag, version_name, version_code, application_id, start_package, dwonload_url
+        from appstore.appgame
+        where isdel=0
+    </select>
+    <select id="selectAll" resultMap="AppgameOutMap">
+        SELECT
+            appgame.*,
+            appimg.appid,
+            appimg.imgurl
+        FROM
+            appgame
+        LEFT JOIN appimg ON appimg.appid = appgame.id
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" parameterType="com.sf.appTv.entity.Appgame">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+       insert into appstore.appgame(name, cover_horizontal_url, cover_vertical_url, game_state, des, down_num, file_size, tag, version_name, version_code, application_id, start_package, dwonload_url,icon)
+       values (#{name}, #{coverHorizontalUrl}, #{coverVerticalUrl}, #{gameState}, #{des}, #{downNum}, #{fileSize}, #{tag}, #{versionName}, #{versionCode}, #{applicationId}, #{startPackage}, #{dwonloadUrl},#{icon})
+
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update appstore.appgame
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="coverHorizontalUrl != null and coverHorizontalUrl != ''">
+                cover_horizontal_url = #{coverHorizontalUrl},
+            </if>
+            <if test="coverVerticalUrl != null and coverVerticalUrl != ''">
+                cover_vertical_url = #{coverVerticalUrl},
+            </if>
+            <if test="gameState != null">
+                game_state = #{gameState},
+            </if>
+            <if test="des != null and des != ''">
+                des = #{des},
+            </if>
+            <if test="downNum != null">
+                down_num = #{downNum},
+            </if>
+            <if test="fileSize != null and fileSize != ''">
+                file_size = #{fileSize},
+            </if>
+            <if test="tag != null and tag != ''">
+                tag = #{tag},
+            </if>
+            <if test="versionName != null and versionName != ''">
+                version_name = #{versionName},
+            </if>
+            <if test="versionCode != null">
+                version_code = #{versionCode},
+            </if>
+            <if test="applicationId != null and applicationId != ''">
+                application_id = #{applicationId},
+            </if>
+            <if test="startPackage != null and startPackage != ''">
+                start_package = #{startPackage},
+            </if>
+            <if test="dwonloadUrl != null and dwonloadUrl != ''">
+                dwonload_url = #{dwonloadUrl},
+            </if>
+
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateDownload">
+        update appstore.appgame
+        set
+         down_num = #{downNum}
+          where id = #{id}
+    </update>
+
+
+</mapper>

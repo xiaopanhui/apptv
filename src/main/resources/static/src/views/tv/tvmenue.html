@@ -1,0 +1,255 @@
+<div class="wrap">
+
+    <!--头部结束-->
+    <link rel="stylesheet" type="text/css" href="/start/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/start/css/bootstrap.min.css?v=20160310">
+    <link rel="stylesheet" type="text/css" href="/start/css/font-awesome.min.css?v=20160310">
+    <link rel="stylesheet" type="text/css" href="/start/css/style.css?v=20160310">
+    <link rel="stylesheet" type="text/css" href="/start/css/animate.css?v=20160310">
+    <link href="/start/css/sweetalert.css" rel="stylesheet">
+
+    <style>
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+            background: #fff;
+            border-bottom: #fff;
+            height: 40px;
+            text-decoration: none;
+
+        }
+
+        .createpanel i {
+            font-size: 12px;
+            margin-right: 5px;
+            font-weight: lighter;
+        }
+
+        .contentborder {
+            border: 1px solid #DDDDDD;
+            border-top: 0;
+            overflow: hidden;
+            min-height: 225px
+        }
+
+        .btn-primary {
+            background-color: #1ab394;
+            border-color: #1ab394;
+            color: #FFFFFF;
+            display: inline-block;
+            padding: 8px 3%;
+            margin: 0 1% 30px 1%;
+            font-size: 16px;
+        }
+
+        .m-l-0 {
+            margin-left: 0;
+        }
+
+        .m-r-0 {
+            margin-right: 0 !important;
+        }
+
+        .deletearea .verycolor-VERIFY_SUCC {
+            color: #0EA107;
+        }
+
+        .deletearea .verycolor-VERIFY_FAIL {
+            color: #EC7474;
+        }
+
+        .deletearea .verycolor-OFFLINE {
+            color: #999;
+        }
+
+        .deletearea .verycolor-DEVING {
+            color: #999;
+        }
+
+        .deletearea .verycolor-FASTPUB_ING {
+            color: #8095A8;
+        }
+
+        .nav-tabs > li {
+            float: left;
+            margin-bottom: -2px;
+        }
+
+        .apptips {
+            width: 100%;
+            text-align: center;
+            margin-top: 88px;
+        }
+
+        .very-status .statustips {
+            position: relative;
+            text-decoration: none;
+        }
+
+        .statustips p {
+            position: absolute;
+            background: #e6e6e6;
+            top: 22px;
+            width: 118px;
+            border: 1px solid #e6e6e6;
+            padding: 3px 9px;
+            border-radius: 6px;
+            text-align: left;
+            display: none;
+        }
+
+        .statustips:hover p {
+            display: block;
+        }
+
+        .createpermitpanel {
+            height: 70px;
+        }
+    </style>
+    <input type="hidden" id="qid" value="3037766691">
+    <div class="wrapper-content createpanel ">
+        <div class="createpermitpanel">
+            <div class="createpermit" style="display: block;">
+                <a href="javascript:void(0);" class="btn btn-primary m-l-0" id="createsoft" rel="noopener">
+                    <i class="fa fa-plus"></i>创建软件</a>
+                <a href="javascript:void(0);" class="btn btn-primary" id="creategame" rel="noopener">
+                    <i class="fa fa-plus"></i>创建游戏</a>
+                <a href="/mod3/createmobileplugin/create?type=game&amp;qid=3037766691" class="btn btn-primary m-r-0"
+                   target="_blank" style="display: none" rel="noopener">
+                    <i class="fa fa-plus"></i>创建插件</a>
+            </div>
+        </div>
+
+
+        <div id="showapplist">
+            <div data-reactroot="">
+                <div class="app-area fr">
+                    <div class="search-area"><input type="text" class="input-search">
+                        <button class="btn-search btn btn-primary">搜索</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox">
+                            <ul class="nav nav-tabs cate" role="tablist">
+                                <li role="presentation" class="all active" data-cate="0"><a href="javascript:void(0);">全部应用</a>
+                                </li>
+                                <li role="presentation" class="game " data-cate="2"><a href="javascript:void(0);">游戏</a>
+                                </li>
+                                <li role="presentation" class="soft " data-cate="1"><a href="javascript:void(0);">软件</a>
+                                </li>
+                                <li role="presentation" style="display: none;"><a href="javascript:void(0);">插件</a></li>
+                                <li role="presentation" class="trashli"><a href="javascript:void(0);"><i
+                                        class="fa fa-trash-o"></i><!-- react-text: 21 -->回收站<!-- /react-text --></a>
+                                </li>
+                            </ul>
+                            <div class="ibox-content contentborder">
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="home"><a class="operatepanel"
+                                                                              href="/mod3/mobileapp/?qid=3037766691&amp;appid=204476031"
+                                                                              target="_blank" rel="noopener">
+                                        <div><img class="logo"
+                                                  src="http://p17.qhimg.com/bdm/96_96_/t01c663886e5c8da18e.png">
+                                            <p><a class="tongjiarea">查看统计数据</a></p></div>
+                                        <div class="listdetail"><h4>数博会</h4>
+                                            <p><!-- react-text: 40 -->AppID：<!-- /react-text --><!-- react-text: 41 -->
+                                                204476031<!-- /react-text --></p>
+                                            <p><!-- react-text: 43 -->包名：<!-- /react-text --><!-- react-text: 44 -->
+                                                com.shengfang.bigdataexpo<!-- /react-text --></p>
+                                            <p class="versionnum"><!-- react-text: 46 -->线上版本号：<!-- /react-text -->
+                                                <!-- react-text: 47 -->211<!-- /react-text --></p><span><!-- react-text: 49 -->更新时间：
+                                                <!-- /react-text --><!-- react-text: 50 -->2019-03-01
+                                                <!-- /react-text --></span></div>
+                                        <div class="deletearea"><i class="delete">&nbsp;</i><span
+                                                class="very-status verycolor-VERIFY_SUCC"><!-- react-text: 54 -->已上线
+                                            <!-- /react-text --><a class="statustips fa fa-warning"
+                                                                   style="display: none;"><p>当前应用已经通过审核，系统会自动根据设定的发布时间上线应用。</p></a></span>
+                                            <p id="hurry1" class="hurry" style="display: none;">催一下</p></div>
+                                    </a><a class="operatepanel"
+                                           href="/mod3/mobileapp/?qid=3037766691&amp;appid=204000696" target="_blank"
+                                           rel="noopener">
+                                        <div><img class="logo"
+                                                  src="http://p16.qhimg.com/bdm/96_96_/t01177b64bf75507d46.png">
+                                            <p><a class="tongjiarea">查看统计数据</a></p></div>
+                                        <div class="listdetail"><h4>数博会展览</h4>
+                                            <p><!-- react-text: 66 -->AppID：<!-- /react-text --><!-- react-text: 67 -->
+                                                204000696<!-- /react-text --></p>
+                                            <p><!-- react-text: 69 -->包名：<!-- /react-text --><!-- react-text: 70 -->
+                                                com.webexpo.bigdata<!-- /react-text --></p>
+                                            <p class="versionnum"><!-- react-text: 72 -->线上版本号：<!-- /react-text -->
+                                                <!-- react-text: 73 -->162<!-- /react-text --></p><span><!-- react-text: 75 -->更新时间：
+                                                <!-- /react-text --><!-- react-text: 76 -->2019-02-20
+                                                <!-- /react-text --></span></div>
+                                        <div class="deletearea"><i class="delete">&nbsp;</i><span
+                                                class="very-status verycolor-OFFLINE"><!-- react-text: 80 -->下线
+                                            <!-- /react-text --><a class="statustips fa fa-warning"
+                                                                   style="display: none;"><p>当前应用已经通过审核，系统会自动根据设定的发布时间上线应用。</p></a></span>
+                                            <p id="hurry1" class="hurry" style="display: none;">催一下</p></div>
+                                    </a><a class="operatepanel"
+                                           href="/mod3/mobileapp/?qid=3037766691&amp;appid=204147111" target="_blank"
+                                           rel="noopener">
+                                        <div><img class="logo"
+                                                  src="http://p17.qhimg.com/bdm/96_96_/t017ddf2cdba2f2ee36.png">
+                                            <p><a class="tongjiarea">查看统计数据</a></p></div>
+                                        <div class="listdetail"><h4>数博会</h4>
+                                            <p><!-- react-text: 92 -->AppID：<!-- /react-text --><!-- react-text: 93 -->
+                                                204147111<!-- /react-text --></p>
+                                            <p><!-- react-text: 95 -->包名：<!-- /react-text --><!-- react-text: 96 -->
+                                                com.example.zhongqinglv.bigdata2018<!-- /react-text --></p>
+                                            <p class="versionnum"><!-- react-text: 98 -->线上版本号：<!-- /react-text --></p>
+                                            <span><!-- react-text: 100 -->更新时间：<!-- /react-text -->
+                                                <!-- react-text: 101 -->2018-05-21<!-- /react-text --></span></div>
+                                        <div class="deletearea"><i class="delete">&nbsp;</i><span
+                                                class="very-status verycolor-VERIFY_FAIL"><!-- react-text: 105 -->审核失败
+                                            <!-- /react-text --><a class="statustips fa fa-warning"
+                                                                   style="display: none;"><p>当前应用已经通过审核，系统会自动根据设定的发布时间上线应用。</p></a></span>
+                                            <p id="hurry1" class="hurry" style="display: none;">催一下</p></div>
+                                    </a>
+                                        <div class="pagearea ">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-white" title="首页"><i
+                                                        class="fa fa-chevron-left"></i></button>
+                                                <button class="btn btn-white active" style="display: inline-block;">1
+                                                </button>
+                                                <button type="button" class="btn btn-white" title="末页"><i
+                                                        class="fa fa-chevron-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane active" id="trash" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            $('#createsoft').click(function () {
+                var url = "/mod3/createmobile/guide?type=soft&qid=";
+                dev.managePublic.tools.addJmenuTab(url, '创建软件');
+            });
+            $('#creategame').click(function () {
+                var url = "/mod3/createmobilegame/guide?type=game&qid=";
+                dev.managePublic.tools.addJmenuTab(url, '创建游戏');
+            });
+        </script>
+        <script src="/resource/js/subauth.js?v=20151127"></script>
+        <script type="text/javascript">
+            var appid = $('#appid').val() || '';
+            mapp.auth.subauth(appid);
+        </script>
+
+
+
+    </div>
+    <!--统计代码-->
+    <script type="text/javascript" src="http://s0.qhres.com/monitor/;monitor/445ca40a.js"></script>
+    <script type="text/javascript">
+        if (location.hostname == 'dev.360.cn') {
+            monitor.setProject('360_dev').getTrack().getClickAndKeydown();
+        }
+    </script>
+
+
+</div>
